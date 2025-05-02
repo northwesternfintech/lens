@@ -1,0 +1,31 @@
+name: CI - Python Unit Testing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  python-unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+
+    - name: Install poetry dependencies
+      run: make install 
+
+    - name: Run tests
+      run: |
+            make test
