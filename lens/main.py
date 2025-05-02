@@ -1,2 +1,8 @@
+from lens.core import Lens
+
+
 if __name__ == "__main__":
-    print("Hello from lens.")
+    l = Lens()
+    print("Starting lens initialization check")
+    l.startup()
+
