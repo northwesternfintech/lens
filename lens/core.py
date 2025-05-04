@@ -1,4 +1,4 @@
-from lens.util.hostname import check_valid_lens_hostname
+from lens.util.hostname import check_valid_lens_hostname, get_hostname
 
 
 class Lens:
@@ -6,5 +6,6 @@ class Lens:
         pass
 
     def startup(self) -> None:
-        if not check_valid_lens_hostname():
+        if not check_valid_lens_hostname(get_hostname()):
             raise RuntimeError("Cannot start lens on invalid host.")
+        print("Lens startup succeeded.")

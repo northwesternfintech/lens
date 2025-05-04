@@ -7,5 +7,5 @@ def get_hostname() -> str:
     return gethostname()
 
 
-def check_valid_lens_hostname() -> bool:
-    return get_hostname() in ALLOWED_HOSTNAMES
+def check_valid_lens_hostname(hostname: str) -> bool:
+    return hostname in ALLOWED_HOSTNAMES
