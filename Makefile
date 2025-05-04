@@ -17,3 +17,6 @@ lint:
 format:
 	poetry run ruff format lens
 	poetry run ruff check --fix lens
+
+.PHONY: ci
+ci: lint test
