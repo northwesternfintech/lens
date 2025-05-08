@@ -1,6 +1,14 @@
+from loguru import logger
+
 from lens.core import Lens
 
-if __name__ == "__main__":
+
+@logger.catch
+def main():
     ln = Lens()
-    print("Starting lens initialization check.")
+    logger.info("Starting lens initialization check.")
     ln.startup()
+
+
+if __name__ == "__main__":
+    main()
