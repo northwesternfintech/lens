@@ -4,7 +4,7 @@ from lens.core import Lens
 
 
 @logger.catch
-def main():
+def main() -> None:
     ln = Lens()
     logger.info("Starting lens initialization check.")
     ln.startup()
