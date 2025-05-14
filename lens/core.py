@@ -1,3 +1,5 @@
+from loguru import logger
+
 from lens.util.hostname import check_valid_lens_hostname, get_hostname
 
 
@@ -8,4 +10,4 @@ class Lens:
     def startup(self) -> None:
         if not check_valid_lens_hostname(get_hostname()):
             raise RuntimeError("Cannot start lens on invalid host.")
-        print("Lens startup succeeded.")
+        logger.info("Lens startup succeeded.")
