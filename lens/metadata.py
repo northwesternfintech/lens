@@ -1,8 +1,9 @@
-from datetime import date
-from dataclasses import dataclass, asdict
 import json
+from dataclasses import asdict, dataclass
+from datetime import date
 
 CURRENT_VERSION = 0
+
 
 @dataclass
 class Metadata:

@@ -1,16 +1,16 @@
-import json
 from pathlib import Path
 
-from lens.metadata import CURRENT_VERSION, Metadata
 from loguru import logger
 
 from lens.descriptor import load_data_descriptor
+from lens.metadata import CURRENT_VERSION, Metadata
 
 METADATA_FILENAME = "metadata.json"
 
 
 def check_metadata_exists(base_path: Path) -> bool:
     return (base_path / METADATA_FILENAME).exists()
+
 
 def check_metadata_version_match(base_path: Path) -> bool:
     with open(base_path / METADATA_FILENAME) as f:
