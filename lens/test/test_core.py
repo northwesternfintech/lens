@@ -48,7 +48,6 @@ def test_core_startup_depth_load_invalid_symbol() -> None:
         ln.load_trades_for_day("avaxnop", "2025-02-21")
 
 
-#
 def test_core_startup_depth_load_nonexistent_date() -> None:
     ln = Lens()
     ln._force_startup_unsafe(TEST_DATA_PATH)
