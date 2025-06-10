@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from loguru import logger
 
@@ -16,7 +16,7 @@ def parse_arguments() -> Any:
 
 
 @logger.catch
-def main(data_root: Optional[Path]) -> None:
+def main(data_root: Path | None) -> None:
     ln = Lens()
     logger.info("Starting lens initialization check.")
     ln.startup(data_root)
