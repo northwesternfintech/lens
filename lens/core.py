@@ -36,7 +36,7 @@ class Lens:
             raise RuntimeError("Coin is not available in this dataset.")
         for file in self.descriptor.data_paths[coin].depth_paths:
             if date + ".csv" == file.name:
-                return pd.read_csv(file, sep='|')
+                return pd.read_csv(file, sep="|")
         raise RuntimeError("Failed to find requested date.")
 
     def _check_coin_available(self, coin: str) -> bool:
@@ -63,7 +63,6 @@ class Lens:
         if not check_file_structure_correct(data_root):
             raise RuntimeError("File structure does not match expected directory structure.")
         logger.info("File structure is correct.")
-
 
     def _force_startup_unsafe(self, data_root: Path) -> None:
         self.started = True
