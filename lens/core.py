@@ -7,13 +7,18 @@ from lens.descriptor import DataDescriptor, load_data_descriptor
 from lens.util.hostname import check_valid_lens_hostname, get_hostname
 from lens.util.paths import check_file_structure_correct, check_metadata_exists, check_metadata_version_match
 
+DEFAULT_PATH = Path("/pool/lens")
+
 
 class Lens:
     def __init__(self) -> None:
         self.started = False
         self.descriptor: DataDescriptor
 
-    def startup(self, data_root: Path) -> None:
+    def startup(self, data_root: Path | None) -> None:
+        if data_root is None:
+            logger.info("No path specified - falling back to default path.")
+            data_root = DEFAULT_PATH
         self._startup_check_hostname()
         self._startup_check_metadata(data_root)
         self._startup_check_files(data_root)
