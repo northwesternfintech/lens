@@ -20,3 +20,8 @@ format:
 
 .PHONY: ci
 ci: lint test
+
+.PHONY: build
+build:
+	poetry install
+	poetry build
