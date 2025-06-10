@@ -54,10 +54,12 @@ def test_core_startup_depth_load_nonexistent_date() -> None:
     with pytest.raises(RuntimeError):
         ln.load_trades_for_day("avax", "2025-02-28")
 
+
 def test_core_query_trades_without_startup() -> None:
     ln = Lens()
     with pytest.raises(RuntimeError):
         ln.load_trades_for_day("avax", "2025-02-21")
+
 
 def test_core_query_depth_without_startup() -> None:
     ln = Lens()
