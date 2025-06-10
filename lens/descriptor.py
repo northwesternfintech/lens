@@ -11,10 +11,10 @@ class DataPathContainer:
     depth_paths: list[Path]
 
 
+@dataclass
 class DataDescriptor:
-    def __init__(self, root: Path, data_paths: dict[str, DataPathContainer]) -> None:
-        self.root = root
-        self.data_paths = data_paths
+    root: Path
+    data_paths: dict[str, DataPathContainer]
 
 
 def load_data_descriptor(base_path: Path) -> DataDescriptor:
