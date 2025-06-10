@@ -9,7 +9,7 @@ METADATA_FILENAME = "metadata.json"
 
 
 def check_metadata_exists(base_path: Path) -> bool:
-    return base_path.joinpath(METADATA_FILENAME).exists()
+    return (base_path / METADATA_FILENAME).exists()
 
 
 def check_file_structure_correct(base_path: Path) -> bool:

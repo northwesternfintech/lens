@@ -1,3 +1,4 @@
+```
 lens/
 ├── avax
 │   ├── depth
@@ -46,3 +47,4 @@ lens/
 │       ├── 2025-03-01.csv
 │       └── 2025-03-02.csv
 └── metadata.json
+```
