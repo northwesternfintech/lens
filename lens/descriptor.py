@@ -4,13 +4,14 @@ from pathlib import Path
 TRADE_DIRNAME = "trades"
 DEPTH_DIRNAME = "depth"
 
+
 @dataclass
 class DataPathContainer:
     trade_paths: list[Path]
     depth_paths: list[Path]
 
-class DataDescriptor:
 
+class DataDescriptor:
     def __init__(self, root: Path, data_paths: dict[str, DataPathContainer]) -> None:
         self.root = root
         self.data_paths = data_paths

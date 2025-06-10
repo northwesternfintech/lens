@@ -7,7 +7,6 @@ from lens.descriptor import load_data_descriptor
 METADATA_FILENAME = "metadata.json"
 
 
-
 def check_metadata_exists(base_path: Path) -> bool:
     return (base_path / METADATA_FILENAME).exists()
 
