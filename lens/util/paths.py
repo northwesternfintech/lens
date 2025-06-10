@@ -2,10 +2,10 @@ from pathlib import Path
 
 from loguru import logger
 
+from lens.descriptor import load_data_descriptor
+
 METADATA_FILENAME = "metadata.json"
 
-TRADE_DIRNAME = "trades"
-DEPTH_DIRNAME = "depth"
 
 
 def check_metadata_exists(base_path: Path) -> bool:
@@ -13,14 +13,17 @@ def check_metadata_exists(base_path: Path) -> bool:
 
 
 def check_file_structure_correct(base_path: Path) -> bool:
-    result = True
-    coin_paths = [child for child in base_path.iterdir() if child.is_dir()]
+    try:
+        descriptor = load_data_descriptor(base_path)
+    except FileNotFoundError:
+        logger.warning("Failed to build data descriptor - missing files.")
+        return False
+    data_file_counts = set()
+    for _, data_container in descriptor.data_paths.items():
+        data_file_counts.add(len(data_container.trade_paths))
+        data_file_counts.add(len(data_container.depth_paths))
 
-    for coin_path in coin_paths:
-        trade_path = coin_path.joinpath(TRADE_DIRNAME)
-        depth_path = coin_path.joinpath(DEPTH_DIRNAME)
-        if not trade_path.exists() or not depth_path.exists():
-            logger.warning(f"Could not find all paths ({trade_path} and {depth_path}) for coin in dir {coin_path}.")
-            result = False
-
-    return result
+    if len(data_file_counts) != 1:
+        logger.warning("Data files are not uniform in counts.")
+        return False
+    return True
